@@ -26,5 +26,6 @@ urlpatterns = [
     path('', include('likes.urls')),
     path('', include('comment_likes.urls')),
     path('', include('reply.urls')),
+    path('', include('reply_likes.urls')),
 
 ]
