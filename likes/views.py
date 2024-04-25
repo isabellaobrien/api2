@@ -1,3 +1,20 @@
-from django.shortcuts import render
+from rest_framework.views import APIView
+from rest_framework.response import Response
+from .models import Like
+from .serializers import LikeSerializer
+from rest_framework import generics, permissions
+from social.permissions import IsOwnerOrReadOnly 
 
-# Create your views here.
+
+class LikeList(generics.ListCreateAPIView):
+    permission_classes = [permissions.IsAuthenticatedOrReadOnly]
+    serializer_class = LikeSerializer
+    queryset = Like.objects.all()
+
+    def perform_create(self, serializer):
+        serializer.save(owner=self.request.user)
+
+class LikeDetail(generics.RetrieveDestroyAPIView):
+    permission_classes = [IsOwnerOrReadOnly]
+    serializer_class = LikeSerializer
+    queryset = Like.objects.all()

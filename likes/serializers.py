@@ -2,7 +2,7 @@ from .models import Like
 from rest_framework import serializers
 from django.db import IntegrityError
 
-class CommentSerializer(serializers.ModelSerializer):
+class LikeSerializer(serializers.ModelSerializer):
     owner = serializers.ReadOnlyField(source='owner.username')
 
     class Meta:

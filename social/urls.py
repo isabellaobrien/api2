@@ -23,5 +23,6 @@ urlpatterns = [
     path('', include('stories.urls')),
     path('', include('profiles.urls')),
     path('', include('comments.urls')),
+    path('', include('likes.urls')),
 
 ]
