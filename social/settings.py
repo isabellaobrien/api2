@@ -57,6 +57,7 @@ INSTALLED_APPS = [
     'profiles',
     'comments',
     'likes',
+    'comment_likes'
 
 ]
 
