@@ -1,6 +1,7 @@
 from .models import Reply
 from reply_likes.models import ReplyLike
 from rest_framework import serializers
+from django.contrib.humanize.templatetags.humanize import naturaltime
 
 class ReplySerializer(serializers.ModelSerializer):
     owner = serializers.ReadOnlyField(source='owner.username')
@@ -9,6 +10,14 @@ class ReplySerializer(serializers.ModelSerializer):
     profile_image = serializers.ReadOnlyField(source='owner.profile.image.url')
     reply_like_id = serializers.SerializerMethodField()
     reply_likes_count = serializers.ReadOnlyField()
+    created_at = serializers.SerializerMethodField()
+    updated_at = serializers.SerializerMethodField()
+
+    def get_created_at(self, obj):
+        return naturaltime(obj.created_at)
+    
+    def get_updated_at(self, obj):
+        return naturaltime(obj.updated_at)
 
     def get_is_owner(self, obj):
         request = self.context['request']
