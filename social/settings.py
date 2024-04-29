@@ -40,7 +40,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 DEBUG = True
 # DEBUG = 'DEV' in os.environ
 
-ALLOWED_HOSTS = ['8000-isabellaobrien-api20-p2numd0oeuz.ws-eu110.gitpod.io']
+ALLOWED_HOSTS = ['reading-media-api-9661e3dfdf56.herokuapp.com', '8000-isabellaobrien-api20-p2numd0oeuz.ws-eu110.gitpod.io']
 
 
 # Application definition
