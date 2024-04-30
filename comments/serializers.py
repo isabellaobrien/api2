@@ -1,6 +1,7 @@
 from .models import Comment
 from comment_likes.models import CommentLike
 from rest_framework import serializers
+from django.contrib.humanize.templatetags.humanize import naturaltime
 
 class CommentSerializer(serializers.ModelSerializer):
     owner = serializers.ReadOnlyField(source='owner.username')

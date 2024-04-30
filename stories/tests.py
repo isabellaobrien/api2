@@ -9,8 +9,8 @@ class StoryListViewTests(APITestCase):
         User.objects.create_user(username='bob', password='pass')
 
     def test_can_list_stories(self):
-        adam = User.objects.get(username='bob')
-        Story.objects.create(owner=adam, title='a title')
+        bob = User.objects.get(username='bob')
+        Story.objects.create(owner=bob, title='a title')
         response = self.client.get('/stories/')
         self.assertEqual(response.status_code, status.HTTP_200_OK)
 
@@ -22,7 +22,7 @@ class StoryListViewTests(APITestCase):
         self.assertEqual(response.status_code, status.HTTP_201_CREATED)
 
     def test_user_not_logged_in_cant_create_story(self):
-        response = self.client.post('/stories/', {'title': 'a title'})
+        response = self.client.post('/stories/', {'title': 'a title','description': 'a description', 'content': 'some content'})
         self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
 
 
