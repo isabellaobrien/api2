@@ -1,6 +1,7 @@
 from rest_framework import serializers
 from .models import Story
 from likes.models import Like
+from django.contrib.humanize.templatetags.humanize import naturaltime
 
 class StorySerializer(serializers.ModelSerializer):
     owner = serializers.ReadOnlyField(source='owner.username')
