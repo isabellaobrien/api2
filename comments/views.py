@@ -4,6 +4,7 @@ from .serializers import CommentSerializer, CommentDetailSerializer
 from rest_framework import generics, permissions, filters
 from social.permissions import IsOwnerOrReadOnly 
 from django.db.models import Count
+from django_filters.rest_framework import DjangoFilterBackend
 
 
 class CommentList(generics.ListCreateAPIView):
@@ -15,7 +16,11 @@ class CommentList(generics.ListCreateAPIView):
     ).order_by('-created_at')
 
     filter_backends = [
-        filters.OrderingFilter
+        filters.OrderingFilter,
+        DjangoFilterBackend
+    ]
+    filterset_fields = [
+        'story',
     ]
     ordering_fields = [
         'comment_likes_count',
