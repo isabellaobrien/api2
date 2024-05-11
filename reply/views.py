@@ -4,7 +4,7 @@ from .serializers import ReplySerializer, ReplyDetailSerializer
 from rest_framework import generics, permissions, filters
 from social.permissions import IsOwnerOrReadOnly 
 from django.db.models import Count
-
+from django_filters.rest_framework import DjangoFilterBackend
 
 class ReplyList(generics.ListCreateAPIView):
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
@@ -18,12 +18,15 @@ class ReplyList(generics.ListCreateAPIView):
         serializer.save(owner=self.request.user)
 
     filter_backends = [
-        filters.OrderingFilter
+        filters.OrderingFilter,
+        DjangoFilterBackend
     ]
+    
     filterset_fields = [
         'comment',
-        'reply_likes_count'
+        # 'reply_likes_count'
     ]
+    
 
 class ReplyDetail(generics.RetrieveUpdateDestroyAPIView):
     permission_classes = [IsOwnerOrReadOnly]
