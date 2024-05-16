@@ -15,6 +15,7 @@ class StorySerializer(serializers.ModelSerializer):
     created_at = serializers.SerializerMethodField()
     updated_at = serializers.SerializerMethodField()
     save_id = serializers.SerializerMethodField()
+    save_count = serializers.ReadOnlyField()
 
     def get_created_at(self, obj):
         return naturaltime(obj.created_at)
@@ -48,6 +49,6 @@ class StorySerializer(serializers.ModelSerializer):
         model = Story
         fields = [
             'id', 'owner', 'created_at', 'updated_at', 'title', 'content', 'description', 'is_owner', 'profile_id',
-            'profile_image', 'like_id', 'likes_count', 'comments_count', 'save_id'
+            'profile_image', 'like_id', 'likes_count', 'comments_count', 'save_id', 'save_count'
         ]
 

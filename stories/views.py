@@ -12,7 +12,8 @@ class StoryList(generics.ListCreateAPIView):
     serializer_class = StorySerializer
     queryset = Story.objects.annotate(
         likes_count = Count('like', distinct=True),
-        comments_count = Count('comment', distinct=True)
+        comments_count = Count('comment', distinct=True),
+        save_count = Count('save', distinct=True)
     ).order_by('-created_at')
 
     filter_backends = [
@@ -22,6 +23,7 @@ class StoryList(generics.ListCreateAPIView):
     ordering_fields = [
         'likes_count',
         'comments_count',
+        'save_count',
         'like__created_at',
     ]
 
