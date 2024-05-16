@@ -41,8 +41,8 @@ class StoryList(generics.ListCreateAPIView):
 class StoryDetail(generics.RetrieveUpdateDestroyAPIView):
     permission_classes = [IsOwnerOrReadOnly]
     serializer_class = StorySerializer
-    # queryset = Story.objects.all()
     queryset = Story.objects.annotate(
         likes_count = Count('like', distinct=True),
-        comments_count = Count('comment', distinct=True)
+        comments_count = Count('comment', distinct=True),
+        save_count = Count('save', distinct=True)
     ).order_by('-created_at')
