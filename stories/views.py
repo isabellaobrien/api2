@@ -29,6 +29,7 @@ class StoryList(generics.ListCreateAPIView):
         'owner__followed__owner__profile',
         'like__owner__profile',
         'owner__profile',
+        'save__owner__profile'
     ]
 
     def perform_create(self, serializer):
