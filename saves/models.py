@@ -15,4 +15,3 @@ class Save(models.Model):
         return f'{self.owner} {self.story}'
 
 
-

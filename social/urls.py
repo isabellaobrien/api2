@@ -34,5 +34,6 @@ urlpatterns = [
     path('', include('reply.urls')),
     path('', include('reply_likes.urls')),
     path('', include('followers.urls')),
+    path('', include('saves.urls')),
 
 ]

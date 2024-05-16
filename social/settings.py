@@ -74,6 +74,7 @@ INSTALLED_APPS = [
     'reply',
     'reply_likes',
     'followers',
+    'saves'
 ]
 
 SITE_ID = 1
