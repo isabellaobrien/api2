@@ -38,10 +38,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.environ.get('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 # DEBUG = 'DEV' in os.environ
 
-ALLOWED_HOSTS = ['reading-media-api-9661e3dfdf56.herokuapp.com', '8000-isabellaobrien-api20-p2numd0oeuz.ws-eu111.gitpod.io']
+ALLOWED_HOSTS = ['reading-media-api-9661e3dfdf56.herokuapp.com', '8000-isabellaobrien-api20-p2numd0oeuz.ws-eu114.gitpod.io']
 
 
 # Application definition

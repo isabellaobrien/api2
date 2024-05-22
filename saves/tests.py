@@ -58,7 +58,7 @@ class SaveDetailViewTests(APITestCase):
         response = self.client.get('/saves/999/')
         self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
 
-    def test_user_can_unlike_story(self):
+    def test_user_can_unsave_story(self):
         self.client.login(username='bob', password='pass')
         url = reversed('/saves/1/')
         data = {'story': 1}
