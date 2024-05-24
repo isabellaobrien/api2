@@ -1,4 +1,4 @@
-#API
+# API
 
 Take a look at the deployed api: [api](https://reading-media-api-9661e3dfdf56.herokuapp.com/)
 
@@ -42,7 +42,7 @@ Take a look at the deployed api: [api](https://reading-media-api-9661e3dfdf56.he
 
 I’ve created automated tests for all the api models. The tests for each app are stored in the test.py file. The tests  are run by entering “python manage.py test” in the terminal.
 
-![api tests](./src/assets/api%20tests.png)
+![api tests](./assets/api%20tests.png)
 
 ## API Deployment
 * I made sure the libraries used were stored in the requirements.txt file.
