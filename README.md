@@ -1,39 +1,52 @@
-![CI logo](https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png)
+#API
 
-Welcome,
+Take a look at the deployed api: [api](https://reading-media-api-9661e3dfdf56.herokuapp.com/)
 
-This is the Code Institute student template for Codeanywhere. If you are using Gitpod then you need [this template](https://github.com/Code-Institute-Org/gitpod-full-template) instead.  We have preinstalled all of the tools you need to get started. It's perfectly ok to use this template as the basis for your project submissions.
+## Api testing 
 
-You can safely delete this README.md file, or change it for your own project. Please do read it at least once, though! It contains some important information about Codeanywhere and the extensions we use. Some of this information has been updated since the video content was created. The last update to this file was: **August 30th, 2023**
+| action | expected behaviour | pass/fail |
+|--------|--------------------|-----------|
+| Enter the url in browser | the user should see this welcome message - "message": "Welcome to my django rest framework API!" | pass |
+| Enter url/profiles | the user should see a list of user profiles, each profile should have these fields: "Id", "owner", "name”, "about_me", “image”, “created_at”, “updated_at”, “is_owner”, “following_id”, “story_count”, “followers_count”, following_count”. | pass |
+| As a logged in user enter url/profiles/your profile id | you should be able to edit these fields: “name”, “about_me”, “image”. | pass |
+| Enter url/stories | the user should see a list of user stories, each story should have these fields: "Id", "owner", “created_at”, “updated_at”, “title”, “content”, “description”, “is_owner”, ”profile_id”, “profile_image”, “like_id”, “likes_count”, “comments_count”, “save_id”, “save_count”. | pass |
+| Enter url/stories as a logged in user | you should be able to create a story via the form. | pass |
+| As a logged in user enter url/stories/your story id | you should be able to edit these fields: “title”, “content”, “description”. You should also be able to delete the story. | pass |
+| Enter url/likes | The user should see the list of like instances on the stories. Each instance should have these fields: "Id", "owner", “created_at”, “story”. | pass |
+| Enter url/likes as a logged in user | you should be able to create a like instance via the form. | pass |
+| Try to create multiple like instances on a story | you should see this error message -  "detail": "duplicate like" | pass |
+| As a logged in user enter url/likes/your like id | you should be able to delete the like instance. | pass |
+| Enter url/comments | the user should see a list of user comments, each comment should have these fields: "Id", "owner", ”profile_id”, “profile_image”,  “content”, “created_at”, “updated_at”, “is_owner”, “story”, “comment_like_id”, “comment_likes_count”, “comment_reply_count”. | pass |
+| Enter url/comments as a logged in user | you should be able to create a comment via the form. | pass |
+| As a logged in user enter url/comments/your comment id | you should be able to edit these fields: “content”.You should also be able to delete the comment. | pass |
+| Enter url/comment_likes | The user should see the list of like instances on the comments. Each instance should have these fields: "Id", "owner", “created_at”, “comment”. | pass |
+| Enter url/comment_likes as a logged in user | you should be able to create a like instance on a comment via the form. | pass |
+| Try to create multiple like instances on a comment | you should see this error message - "detail": "duplicate like" | pass |
+| As a logged in user enter url/comment_likes/your comment like id | you should be able to delete the comment like instance. | pass |
+| Enter url/replies | the user should see a list of user replies to comments , each reply should have these fields: "Id", "owner", ”profile_id”, “profile_image”,  “content”, “created_at”, “updated_at”, “is_owner”, “comment”, “reply_like_id”, “reply_likes_count”. | pass |
+| Enter url/replies as a logged in user | you should be able to create a reply via the form. | pass |
+| As a logged in user enter url/replies/your reply id | you should be able to edit these fields: “content”.You should also be able to delete the reply. | pass |
+| Enter url/reply_likes | The user should see the list of like instances on the replies. Each instance should have these fields: "Id", "owner", “created_at”, “reply”. | pass |
+| Enter url/reply_likes as a logged in user | you should be able to create a like instance on a reply  instance via the form. | pass |
+| Try to create multiple like instances on a reply | you should see this error message - "detail": "duplicate like" | pass |
+| As a logged in user enter url/reply_likes/your reply like id | you should be able to delete the reply like instance. | pass |
+| Enter url/saves | The user should see the list of save instances on the stories. Each instance should have these fields: "Id", "owner", “created_at”, “story”. | pass|
+| Enter url/saves as a logged in user | you should be able to create a save instance via the form. | pass |
+| Try to create multiple save instances on a story | you should see this error message - "detail": "duplicate save" | pass |
+| As a logged in user enter url/saves/your save id | you should be able to delete the save instance. | pass |
+| Enter url/followers | the user should see a list of user follower instances, each follower instance should have these fields: "Id", "owner", “created_at”, “followed_name”, “followed”. | pass |
+| Enter url/followers as a logged in user | you should be able to create a follow instance via the form. | pass |
+| Try to create multiple save instances on a story | you should see this error message - "detail": "already following" | pass |
+| As a logged in user enter url/followers/your follower id | You should also be able to delete the follower instance. | pass |
+| Enter incorrect url pattern | you should see error 404(page not found) | pass |
 
-## Codeanywhere Reminders
+I’ve created automated tests for all the api models. The tests for each app are stored in the test.py file. The tests  are run by entering “python manage.py test” in the terminal.
 
-To run a frontend (HTML, CSS, Javascript only) application in Codeanywhere, in the terminal, type:
+![api tests](./src/assets/api%20tests.png)
 
-`python3 -m http.server`
-
-A button should appear to click: _Open Preview_ or _Open Browser_.
-
-To run a frontend (HTML, CSS, Javascript only) application in Codeanywhere with no-cache, you can use this alias for `python3 -m http.server`.
-
-`http_server`
-
-To run a backend Python file, type `python3 app.py`, if your Python file is named `app.py` of course.
-
-A button should appear to click: _Open Preview_ or _Open Browser_.
-
-In Codeanywhere you have superuser security privileges by default. Therefore you do not need to use the `sudo` (superuser do) command in the bash terminal in any of the lessons.
-
-To log into the Heroku toolbelt CLI:
-
-1. Log in to your Heroku account and go to _Account Settings_ in the menu under your avatar.
-2. Scroll down to the _API Key_ and click _Reveal_
-3. Copy the key
-4. In Codeanywhere, from the terminal, run `heroku_config`
-5. Paste in your API key when asked
-
-You can now use the `heroku` CLI program - try running `heroku apps` to confirm it works. This API key is unique and private to you so do not share it. If you accidentally make it public then you can create a new one with _Regenerate API Key_.
-
----
-
-Happy coding!
+## API Deployment
+* I made sure the libraries used were stored in the requirements.txt file.
+* I navigated to heroku, I logged in and I clicked on "create an app", I named the app and selected my region.
+* I navigated to the settings and added the config vars I needed. (ALLOWED_HOSTS, CLIENT_ORIGIN, CLIENT_ORIGIN_DEV, CLOUDINARY_URL, DATABASE_URL, DISABLE_COLLECTSTATIC, SECRET_KEY)
+* I then navigated to the deploy tab, connected my heroku project to my github repository.
+* I then manually deploy my project.
