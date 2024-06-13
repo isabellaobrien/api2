@@ -11,7 +11,6 @@ Take a look at the deployed api: [api](https://reading-media-api-9661e3dfdf56.he
 | Enter url/stories | the user should see a list of user stories, each story should have these fields: "id", "owner", “created_at”, “updated_at”, “title”, “content”, “description”, “is_owner”, ”profile_id”, “profile_image”, “like_id”, “likes_count”, “comments_count”, “save_id”, “save_count”. | pass |
 | Enter url/likes | The user should see the list of like instances on the stories. Each instance should have these fields: "id", "owner", “created_at”, “story”. | pass |
 | Enter url/comments | the user should see a list of user comments, each comment should have these fields: "id", "owner", ”profile_id”, “profile_image”,  “content”, “created_at”, “updated_at”, “is_owner”, “story”, “comment_like_id”, “comment_likes_count”, “comment_reply_count”. | pass |
-|
 | Enter url/comment_likes | The user should see the list of like instances on the comments. Each instance should have these fields: "id", "owner", “created_at”, “comment”. | pass |
 | Enter url/replies | the user should see a list of user replies to comments , each reply should have these fields: "id", "owner", ”profile_id”, “profile_image”,  “content”, “created_at”, “updated_at”, “is_owner”, “comment”, “reply_like_id”, “reply_likes_count”. | pass |
 | Enter url/reply_likes | The user should see the list of like instances on the replies. Each instance should have these fields: "id", "owner", “created_at”, “reply”. | pass |
